@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "author": "tanmai with an i",
+  "author": "riya",
   "license": "ISC",
   "dependencies": {
     "@tomtom-international/web-sdk-maps": "^6.20.0",
