@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8">
+  <title>EV Search</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps.css">
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps-web.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/services/services-web.min.js"></script>
+  <script src="chargingAvailability.js"></script>
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    #left,
+    #right {
+      height: 100vh
+    }
+
+    #left {
+      float: left;
+      width: 200px;
+      overflow-y: auto;
+      background-color: rgb(255, 255, 251);
+
+    }
+
+    #right {
+      margin-left: 200px;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    #controls,
+    #summary {
+      padding: 5px;
+    }
+
+    div.mapboxgl-popup-content>h3 {
+      margin: 0
+    }
+
+    input.text {
+      margin-bottom: 5px;
+      line-height: 2px;
+    }
+
+    div.clear {
+      clear: both;
+    }
+
+    .btn {
+      background-color: rgb(0, 128, 255);
+      color: white;
+      width: 100%;
+      padding: 10px 8px 10px 8px;
+      border-radius: 8px;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+      border-color: aliceblue;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: rgb(83, 120, 251);
+    }
+
+    .text {
+      width: 90%;
+      display: block;
+      margin-bottom: .75em;
+      padding: 2px 2px 2px 2px;
+    }
+
+    .loc {
+      display: block;
+      font-size: 1.1em;
+      font-weight: bolder;
+      color: lightslategray;
+    }
+
+    input {
+      caret-color: blue;
+      border-radius: 1.3rem;
+      border-style: outset;
+      border-width: .15em;
+    }
+    .mcom{
+      margin-top: 100px;
+    }
+
+    .com {
+      display: block;
+      width: 97%;
+      padding: 2px 2px 2px 2px;
+      
+    }
+
+    .icom {
+      display: block;
+      font-size: 5px;
+      width: 20%;
+      line-height: 1.6;
+      padding: 5px 5px 5px 5px;
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left">
+    <div id="controls">
+      <label for="location" class="loc"> Location:</label>
+      <input class="text" id="location" type="text" />
+      <br>
+      <label for="max_dist" class="loc"> MaximumDistance (km):</label>
+      <input class="text" id="distance" type="text" value="10" />
+      <br />
+      <input type="button" class="btn" value="Find Stations" onclick="findLocation()" />
+    </div>
+    <hr>
+    <div class="mcom">
+      <h3 class="text">EV Companies </h3>
+      <br>
+      <div class="com">
+        <img src="https://icon.horse/icon/heroelectric.in" class="icom">
+        <img src="https://icon.horse/icon/www.atherenergy.com" class="icom">
+        <img src="https://icon.horse/icon/www.tatamotors.com" class="icom">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3CAMAAAAO5y+4AAAAk1BMVEX////lGDfiAAD63N3rb3vkACPkACXlFDXrbXnkACr2wsb52dr2xcnjABvlDTLjABj74+X++PnjABH98fLugoz40tXzsLbyoqjnOU7tfIX86uvxnaTsdH/sfID0tbrrYG7uio/pUWLoSFfqaXHpW2PmK0PpWGjmJj3wkJj0u73nQU7lMj/wlp3oUFvyqa3pZGfkIzDus2eQAAAEsElEQVRoge2a23aqOhRAI5qEgAl3RLEoUrTuWuv/f92BJNys7a6ocexxmE8CMZPAYuUCAAwMDPyv8OxgaiRhGCb7aWB7D/fZxnG9yl1Ncy1KIYdaxaaWr/yjYT9CaSbrqFAhwvDoK5gRVJxD5CfBHZ3BcXsikLDaglkbXJ8JK0qd0mPg3O5cGMucQNnIslnUhaNok75mgtfXTbSDLi1OS/gxg+Rd3y9ukiarHSWyOmSR6HUZG6a98JxWixxvYZvGbPkaMQuJE8SE7rZhT7UTZCPK6ymagPKPt+n458j17OkhzRGU/6Esm/YI9cXOraRsEweiBscz97H/EnZK7pd+nASeuAReMPvAldpl4+vFaRlHDKFVIi6YefTTkebSIqStaatcQEl51zWczmcmly/2GUHlv3HeI8IMFxMtTXhDg8PWcmH9DGHa3DsPVTsZQ66bHvg5OclWI5iG39T9I3/gweNVTDSreYjEA3OqS72fHSGWloVlM72YnL6t+yd4m4zMgt2aRfUfstCKXDiIrNW+rqEH9mGHLkhLoM9LHOjlwwzht95500PwS1LEVXbi986gZ3tbBZHVO3cYLW+ROKjFQ0vmLhiAMZG/y0wGLYpayRvTpK8WgLAOVvi+io3AHNu2Ie8oy4NI3gRi2PbYDIw4i2D9h1l/bZETGK+asbBOPYtcVs2Y1OK8vqLOfiT+QG5obYm9KVsA2zHycR5qdXDz0yqvNYzM27QFM4uQQ3tH9sWbtQ8fEXEP4A44a63zSMTozIvi9mFP8+818ulm2cA683bSdSG+k/UcG5554UNGVl/wom6SwNHjR5Scz7Ou4FONFvjdvoDMFXnD7g2GR0XesdvxurfniN/hdR9gqCisgLNpBxbb3GGY/jteOt6JKi04tAOavCnzGu3RDd0r8y60lle7aSp0FU57PIOUhRUA2yawWKpOC9ZNYDFVWbJk1mSObqf/YIImU551+o/FaQJaUxhWAIyqgMZEpbYZU7KtUm+dKclaqTepun7Ya2rdG7sKaEtVpy+pAlpTqwVycqY4nAGYi8BiK8Xeo8iU5KZZbg+mwovUdfqChXiQFE2NWvAVCAxVa+UyYqTcy7t+ZVOjBp4plU2NGoKyvUhlpy/w+GqZujFszXvh3anXAp2pHcNWFGNKhVOjhilVOTVqGDNM7vl27Lc4Ods9IZwB2LA/z9CCOcz+XugBhJrKqVFDoKnPkiU27vEW7g44n6oWrs5YP0cLnpE1BgYGBgYGBgb+RRxzXCO+5DIbxJSoVYBve2ZnbNk6fMWY0zlpBW75QaZ24v/ztRoxZh7V22JFJ9Y6KyxZffiqj4O8ta7rIzbR9epTjJkuWMrl5ogsORO57D1zu+vfcSbKz69fz4t+WlqO3O72ubc/TttrNIjrHNFpxSVvUB+dXvuap+M9aJbAlW8/cyJ3QHTJu6USSK+90B0vSOYSWc2bL8H4kndFshdOTm7zfkvt7XxvtarWh7e3eb88v2BhBgWmWXtjWzAWXjlFTa/35i3vunl+RT1HKjeJeLERW5bcseHNdCvv9fd33V69CPUJZynqs9NJDd+xz8SG7vP4fcukbq0/ZclnYGBg4N/nP9n3TIvOdCz2AAAAAElFTkSuQmCC"
+          class="icom">
+        <img src="https://icon.horse/icon/okinawascooters.com" class="icom">
+        <img src="https://olectra.com/wp-content/uploads/Olectra-Colour.svg" class="icom">
+        <img src="https://amperevehicles.com/storage/images/logos/ampere_logo.svg" class="icom">
+
+      </div>
+    </div>
+  </div>
+   <div id="right">
+    <div id="map" class="map"></div>
+  </div> 
+  <div class="clear" />
+
+  <script src="ev_search.js"></script>
+</body>
+
+</html>

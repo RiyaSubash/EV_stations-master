@@ -1,0 +1,408 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>EV Charging stations</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+
+        .bg-image {
+            /* The image used */
+            margin-bottom: 5%;
+            width: 75%;
+            margin-left: 20%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h2 {
+            margin-bottom: 5%;
+            margin-top: 5%;
+        }
+
+        .container1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            max-width:100%;
+        }
+
+        .mainimg{
+            max-width: 90%;
+        }
+
+
+        .footer {
+            background: #343a40;
+            padding: 30px 0px;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            margin-top:3%;
+            }
+
+        .footer .row {
+            width: 100%;
+            margin: 1% 0%;
+            padding: 0.6% 0%;
+            color: gray;
+            font-size: 0.8em;
+        }
+
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+        }
+
+        .footer .row a:hover {
+            color: #fff;
+        }
+
+        .footer .row ul {
+            width: 100%;
+        }
+
+        .footer .row ul li {
+            display: inline-block;
+            margin: 0px 30px;
+        }
+
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0% 1%;
+        }
+        .image{
+            margin: 2em;
+        }
+
+        @media (max-width:720px) {
+            .footer {
+                text-align: left;
+                padding: 5%;
+            }
+
+            .footer .row ul li {
+                display: block;
+                margin: 10px 0px;
+                text-align: left;
+            }
+
+            .footer .row a i {
+                margin: 0% 3%;
+            }
+        }
+        .container2{
+            text-align: center;
+        }
+        .portsimg{
+            width: 100%;
+        }
+        .container1{
+            margin-top: 2em;
+        }
+
+        /*.image {
+    flex-basis:70%;
+    order: 2;
+  }*/
+        .text {
+            color: rgb(61, 59, 59);
+
+        }
+        @media screen and (max-width: 1200px){
+            .text{
+                font-size: 15px;
+            }
+            .image{
+                width: 80%;
+                padding: 4px 4px 4px 4px ;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .bg-image{
+                width: 60%;
+            }
+            .text{
+                font-size: 10px;
+            }
+            .image{
+                width: 50%;
+                padding-bottom: 10px;
+            }
+            .container1{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        @media screen and (max-width: 480px){
+            .text{
+                font-size: 8px;
+            }
+            .image{
+                width: 30%;
+                padding-bottom: 8px;
+            }
+            .container1{
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+        .find{
+            border-radius: 60%; 
+            width: 70%;
+        }
+        .navbar{
+            width: 100%;
+            padding-left: 5%;
+            padding-right:5%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            background-color: 6A98B9;
+        }
+        .logo{
+            width: 60px;
+            margin-top: 50px;
+            padding-left: 40px;
+            cursor:pointer;
+        }
+        nav{
+            flex:1;
+            padding-left: 60px;
+        }
+        
+        nav ul li{
+            display: inline;
+            list-style: none;
+            margin:0px 20px;
+        }
+        
+        nav ul li a{
+            font-style: inter;
+            text-decoration: none;
+            color: white;
+            align-items: flex-end;
+        }
+        
+        nav ul li a:hover{
+            color:F8BEB8 ;
+        }
+
+            .content{
+            font-size: 16px;
+            width:60%;
+            height: 150px; 
+            float: right;
+        }
+            .aboutimg{
+            padding: 10px;
+            float: left; 
+            width: 80%;
+            padding-bottom: 8px;  
+            margin: 2em;  
+        }
+            
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="http://127.0.0.1:5500/index.html" target="_blank">
+                <img src="image/logo1.png" width="100" height="100" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-item nav-link active" href="#about">About </a>
+                    <a class="nav-item nav-link" href="#stations">Stations</a>
+                    <a class="nav-item nav-link" href="#ports">AvailablePorts</a>
+                    <a class="nav-item nav-link" href="#services">Services</a>
+                    <a class="nav-item nav-link" href="#footer">Contact-us</a>
+                </div>
+
+                
+
+            </div>
+            <div>
+    </nav>
+            <div>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+
+    <br>
+    <div class="container1">
+        <div class="row no-gutters">
+            <div class="col-xl-6 col-sm-12 ">
+                <div class="bg-image">
+                   <img src="image/bg.jpg" class="mainimg" alt="">
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-12">
+                <p>Electric vehicles can help us reduce carbon emissions and build a more sustainable future. But as drivers, EVs provide us far more than the ability to reduce our carbon footprint.</p>
+                <p>Electric vehicles offer a superior driving experience; instant torque and smooth handling . And let’s be honest, the convenience to charge wherever you park is one you can get used to faster than your average charging session. Next to this, EVs require a lot less maintenance than conventional ICE vehicles.</p>
+                <p>With an EV however, you can charge your vehicle pretty much everywhere: at home, at the office, at a restaurant, whilst doing your shopping, whilst parked on the street, or you can top-off your car’s battery at a (no-longer aptly named) gas station.</p>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- about us -->
+    <div class="container">
+        <h2 class="container2" id="about">ABOUT US</h2>
+        <div class="container1">
+            <div class="image">
+                <img src="image/about.gif">
+            </div>
+            <div class="text">
+                <p>An EV charging station is a device that allows drivers to charge up their electric cars while they’re
+                    parked at home or work. The station has two main components: A power source and a connector. The
+                    power source converts electricity into DC current, which is then converted into AC current using
+                    inverters..</p>
+                <p>You can search for the nearest charging station from our maps api page and can use it to get navigate
+                    it to the place.</p>
+            </div>
+        </div>
+    </div>
+        <!-- our stations -->
+        <div class="container">
+            <h2 class="container2" id="stations">OUR STATIONS</h2>
+            <div class="container1">
+                <div class="text">
+                    <p><b>1. Power :</b>
+                        Low-carbon energy sources such as wind farms and photovoltaic (PV) systems turn energy from wind
+                        or light into the electricity needed to meet the needs of commercial, industrial and
+                        residential customers.</p>
+                    <p>
+                        <b>2. Business, Retail and Fleet Charging :</b>
+                        Charging whilst parked at work or during leisure activities is a convenient way to recharge.
+                    </p>
+                    <p>
+                        <b>3.Charging On-the-Go :</b>
+                        On forecourts electric fast charging services are developed for drivers who need to recharge
+                        their vehicle during their journeys.
+                    </p>
+                    <p><b>4. Home charging :</b>
+                        Charging at home is often the most convenient and cost effective way for private customers to
+                        recharge their cars, as it is where most cars are parked overnight.</p>
+                </div>
+                <div class="image">
+                    <img src="image/first.jpg">
+                </div>
+            </div>
+        </div>
+
+<!-- Ports available -->
+
+  <div class="container">
+    <h2 class="container2" id="ports">Available Charging Ports</h2>
+    <div class="container1">
+        <div class="image">
+            <img src="image/Stations available.png">
+        </div>
+        <div class="text">
+            <p>Level 1 chargers : They are easy to find and use, inexpensive, and reliable. For a single-family home, a Level 1 charger may meet drivers’ needs. Level 1 chargers charge at a rate of 4-5 miles per hour. They work best if a driver is able to plug in and let the vehicle charge overnight on a regular basis.</p>
+            <p>Since Level 1 chargers are of limited use for those who use their cars often or in apartment buildings, many consumers want a Level 2 charger, which can charge at a rate of 20-65 miles per hour. The plugs for Level 2 chargers are different from plugs for Level 1 chargers and require different cords and equipment than what comes with your new car.</p>
+            
+        </div>
+    </div>
+  </div>
+
+            <!-- our services -->
+            <div class="container">
+                <div id="our_services">
+                    <div class="container marketing">
+                        <h2 class="container2" id="services">OUR SERVICES</h2>
+                        <!-- Three columns of text below the carousel -->
+                        <div class="row">
+                            <!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="155"
+                                    xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img"
+                                    aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false"></svg><img src="image/circle1.jpg">
+                                <h4><strong>Search stations</strong></h4>
+                                <p class="text">You can now search nearby charging stations from your current locations and can also
+                                    see how many charging slots are available at that place.</p>
+                                <p><a class="btn btn-info" href="ev_search.html">Search Stations</a></p>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="155"
+                                    xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img"
+                                    aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false"></svg><img class="find" src="image/route1.jpg">
+                                <h4><strong>Finding route</strong></h4>
+                                <p class="text">You can now search your destination path in the most simplest way from your current locations
+                                    .This feature enables you to find the route on your finger tips.</p>
+                                <p><a class="btn btn-info" href="ev_routing.html">Find Route</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="100"
+                                    xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img"
+                                    aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false"></svg><img src="image/circle3.jpg">
+
+                                <h4><strong>Traffic detector</strong></h4>
+                                <p class="text">Get the taffic detection on your way to the destination.You can get information about the traffic status here.
+                                    Enjoy ride! Travel safe! 
+                                </p>
+                                <p><a class="btn btn-info" href="traffic.html">Detect Traffic</a></p>
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+
+
+        <footer>
+            <div id="footer" class="footer" style="width:100% ;">
+                <div class="row">
+                    <ul>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#stations">Our Stations</a></li>
+                        <li><a href="#ports">Charging Ports</a></li>
+                        <li><a href="#">Logo</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+#help-modal {
+    padding: 0;
+  }
+  
+  #incident-list-wrapper {
+    position: relative;
+    flex: 1;
+  }
+  
+  #incident-list-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+  }
+  
+  #lets-start-button {
+    background-color: #000;
+    border: none;
+    font: 700 14px/1.14 Gotham;
+  }
+  
+  #lets-start-button:hover {
+    color: #fff;
+  }
+  
+  #github-button {
+    background-color: #fff;
+    border: none;
+    color: #000;
+    font: 700 14px/1.14 Gotham;
+  }
+  
+  /* #modal-close-button {
+    background-color: #df1b12;
+    color: #fff;
+    opacity: 100;
+    padding-left: 20px;
+  } */
+  
+  #cluster-icon {
+    padding-top: 0px;
+    text-align: center;
+    color: white;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 15px black;
+  }
+  
+  #search-panel-container {
+    z-index: 1;
+  }
+  
+  #show-help-button {
+    background-color: #000;
+    border-color: #7c7c7c;
+    /* opacity: 0.7; */
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  #bounding-box-button:hover {
+    background-color: #61ADE0;
+    color: white;
+  }
+  
+  .show-traffic-layers {
+    color: #b2b2b2;
+    font: 700 14px / normal Gotham;
+    font-stretch: normal;
+    height: 16px;
+    letter-spacing: -0.25px;
+    width: 128px;
+  }
+  
+  .style-relative {
+    font-family: Monaco;
+    font-size: 12px;
+    color: #333333;
+    background-color: #f4f4f4;
+  }
+  
+  .app-info-text {
+    cursor: pointer;
+    font: 400 12px / normal Noway;
+    font-stretch: normal;
+    letter-spacing: -0.21px;
+  }
+  
+  .app-info-text>a {
+    color: #7f7f7f;
+  }
+  
+  .btn {
+    background-color: #8dc3eb;
+    border-color: #8dc3eb;
+    border-radius: 0;
+    color: #fff;
+    font: 700 14px/1.14 Gotham;
+    padding: 10px;
+  }
+  
+  .btn:active {
+    background-color: #e5e5e5;
+    border-color: #e5e5e5;
+    box-shadow: none !important;
+    color: #ccc;
+  }
+  
+  .row-border {
+    background-color: white;
+    border-top: 2px solid #f2f2f2;
+  }
+  
+  #first-row {
+    background-color: white;
+    z-index: 1;
+    box-shadow: -5px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  #secondary-row {
+    background-color: white;
+  }
+  
+  #last-row {
+    margin: auto -15px 0 !important;
+    width: 364px;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 450px;
+    height: 50px;
+    color: white;
+  }
+  
+  #popup-wrapper {
+    display: block;
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  
+  .popup-info {
+    background-color: #004b7f;
+  }
+  
+  .popup-error {
+    background-color: #df1b12;
+  }
+  
+  #popup-message {
+    font-family: Gotham;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .incident-details-list-item-button {
+    border: none;
+  }
+  
+  .incident-details-list-normal-text {
+    color: #000;
+    font: 400 16px / normal Noway;
+    font-stretch: normal;
+    height: 19px;
+    letter-spacing: normal;
+    width: 160px;
+  }
+  
+  .label {
+    color: #000;
+    font: 700 14px/1.14 Gotham;
+    font-stretch: normal;
+    letter-spacing: -0.25px;
+  }
+  
+  .legend-font {
+    font: 700 12px/1.33 Gotham;
+    letter-spacing: normal;
+  }
+  
+  .modal-body {
+    margin: auto;
+    text-align: center;
+    max-width: 25vw;
+  }
+  
+  .modal-body span {
+    color: #707070;
+  }
+  
+  .modal-content {
+    border-radius: 0;
+    min-height: 99%;
+    background-color: #e5e5e5;
+  }
+  
+  .modal-dialog {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .modal-header {
+    border-bottom: none;
+  }
+  
+  .responsive-text {
+    font-size: 1.2vw;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    max-width: 364px;
+    background-color: #f2f2f2;
+  }
+  
+  .style-relative {
+    color: #333;
+    font: 400 12px / normal Monaco;
+    font-stretch: normal;
+    letter-spacing: -0.21px;
+  }
+  
+  .switch {
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    width: 36px;
+  }
+  
+  .switch input {
+    display: none;
+  }
+  
+  .toggle {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+  }
+  
+  .toggle.round {
+    border-radius: 22px;
+  }
+  
+  .toggle.round:before {
+    border-radius: 50%;
+  }
+  
+  .toggle:before {
+    background-color: #fff;
+    bottom: 2px;
+    content: "";
+    height: 16px;
+    left: 2px;
+    position: absolute;
+    transition: 0.2s;
+    width: 16px;
+  }
+  
+  .traffic-icon {
+    height: 26px;
+    width: 26px;
+  }
+  
+  .tt-traffic-icon [class^=tt-icon-circle-] {
+    border-radius: 50%;
+    box-sizing: content-box;
+    width: 26px;
+    height: 26px
+  }
+  
+  .traffic-text {
+    color: #000;
+    font: 700 14px/1.14 Gotham;
+    font-stretch: normal;
+    height: 16px;
+    letter-spacing: -0.25px;
+    width: 111px;
+  }
+  
+  body,
+  #map {
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  input:checked+.toggle {
+    background-color: #8dc3eb;
+  }
+  
+  input:checked+.toggle:before {
+    transform: translateX(16px);
+  }
+  
+  input:focus+.toggle {
+    box-shadow: 0 0 1px #bdd731;
+  }
+  
+  .modal-dialog {
+    margin: 8px auto auto;
+    max-width: 98vw;
+    width: 100%;
+  }
+  ion-icon{
+    font-size: 30px;
+  }

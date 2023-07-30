@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8">
+  <title>EV Routing</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8">
+  <title>EV Search</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps.css">
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps-web.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/services/services-web.min.js"></script>
+  <script src="chargingAvailability.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps.css">
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps-web.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/services/services-web.min.js"></script>
+  <script src="calculateLongDistanceEVRoute.js"></script>
+  <script src="ev_model.js"></script>
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    #left,
+    #right {
+      height: 100vh
+    }
+
+    #left {
+      float: left;
+      width: 300px;
+      overflow-y: auto;
+    }
+
+    #right {
+      margin-left: 300px;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    #controls,
+    #summary {
+      padding: 5px;
+    }
+
+    #summary>h1,
+    #summary>h2,
+    #summary>h3,
+    #summary>h4,
+    #summary>h5,
+    #summary>h6 {
+      margin: 5px 0;
+    }
+
+    input.text {
+      margin-bottom: 5px;
+    }
+    .btn {
+      background-color: rgb(0, 128, 255);
+      color: white;
+      width: 100%;
+      padding: 10px 8px 10px 8px;
+      border-radius: 8px;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+      border-color: aliceblue;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: rgb(83, 120, 251);
+    }
+
+    .text {
+      width: 90%;
+      display: block;
+      margin-bottom: .75em;
+      padding: 2px 2px 2px 2px;
+    }
+
+    .loc {
+      display: block;
+      font-size: 1.1em;
+      font-weight: bolder;
+      color: lightslategray;
+    }
+
+    input {
+      caret-color: blue;
+      border-radius: 1.3rem;
+      border-style: outset;
+      border-width: .15em;
+    }
+
+    div.clear {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left">
+    <div id="controls">
+      <label for="location" class="loc">Starting Location:</label>
+      <input class="text" id="start" type="text" />
+      <br />
+      <label for="location" class="loc">Finish Location:</label>
+      <input class="text" id="finish" type="text" />
+      <br />
+      <input id="calculate" type="button" class="btn" value="Calculate Route" onclick="findStart()" />
+    </div>
+    <div id="summary"></div>
+  </div>
+  <div id="right">
+    <div id="map" class="map"></div>
+  </div>
+  <div class="clear" />
+
+  <script src="ev_routing.js"></script>
+  
+</body>
+
+</html>
