@@ -5,14 +5,14 @@
 
 Welcome to the "EV Charging Station Locator" project! This project aims to provide a web application that helps users locate electric vehicle (EV) charging stations in their vicinity using TomTom Maps API. This Readme file will guide you through the installation process and provide information about the software and APIs used in this project.
 
-![Preview one](./app/static/preview/preview1.png)
-![Preview one](./app/static/preview/preview2.png)
-![Preview one](./app/static/preview/preview3.png)
-![Preview one](./app/static/preview/preview4.png)
-![Preview one](./app/static/preview/preview5.png)
-![Preview one](./app/static/preview/preview6.png)
-![Preview one](./app/static/preview/preview7.png)
-![Preview one](./app/static/preview/preview8.png)
+![Preview one](./app/static/preview/screen1.png)
+![Preview one](./app/static/preview/screen2.png)
+![Preview one](./app/static/preview/screen3.png)
+![Preview one](./app/static/preview/screen4.png)
+![Preview one](./app/static/preview/screen5.png)
+![Preview one](./app/static/preview/screen6.png)
+![Preview one](./app/static/preview/screen7.png)
+![Preview one](./app/static/preview/screen8.png)
 
 ### Installation
 To get started with the EV Charging Station Locator, follow the steps below:
